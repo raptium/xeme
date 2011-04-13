@@ -5,6 +5,7 @@ JS_SRC= \
 
 OUTPUT=xm_compiled.js
 
+JSCFLAGS="--compilation_level=ADVANCED_OPTIMIZATIONS"
 
 all:$(OUTPUT)
 
@@ -21,4 +22,5 @@ xm_compiled.js: $(JS_SRC)
 	  --namespace="xeme.coloring.Graph" \
 	  --namespace="xeme.draw.Canvas" \
 	  --output_mode=compiled \
+      --compiler_flags="$(JSCFLAGS)" \
 	  --compiler_jar=$(HOME)/bin/compiler.jar > $@

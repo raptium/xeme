@@ -42,15 +42,15 @@ xeme.coloring.Graph.prototype.toJSON = function() {
   var edge;
   for(var i in this.vertices) {
     v = this.vertices[i];
-    vertex = {x:v.x,y:v.y,name:v.name};
+    vertex = {'x':v.x,'y':v.y,'name':v.name};
     vertices.push(vertex);
   }
   for(var i in this.edges) {
     e = this.edges[i];
-    edge = {v1:e.v1.name,v2:e.v2.name,c1:e.l1.color,c2:e.l2.color};
+    edge = {'v1':e.v1.name,'v2':e.v2.name,'c1':e.l1.color,'c2':e.l2.color};
     edges.push(edge);
   }
-  return goog.json.serialize({vertices:vertices,edges:edges});
+  return goog.json.serialize({'vertices':vertices,'edges':edges});
 };
 
 xeme.coloring.colors = ['red', 'green', 'blue', 'brown', 'cyan'];
