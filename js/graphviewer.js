@@ -102,11 +102,20 @@ xeme.ui.GraphViewerToolbar = function(graph, viewer) {
     this.handleOperate_, false, this);
 };
 
+/**
+ * Callback function to handle operate events
+ * @private
+ */
 xeme.ui.GraphViewerToolbar.prototype.handleOperate_ = function(e) {
   var p = this.viewer.getProgress();
   this.progressBar.setValue(p);
 };
 
+
+/**
+ * Callback function to handle StateChange events
+ * @private
+ */
 xeme.ui.GraphViewerToolbar.prototype.handleStateChange_ = function(e) {
   switch (this.viewer.getState()) {
     case xeme.ui.GraphViewer.State.STOPPED:
@@ -181,7 +190,6 @@ xeme.ui.GraphViewer = function(graphUrl, opt_parentElement) {
 
   this.state = xeme.ui.GraphViewer.State.NOT_READY; // control state
 };
-
 goog.inherits(xeme.ui.GraphViewer, goog.events.EventTarget);
 
 /**
@@ -245,10 +253,17 @@ xeme.ui.GraphViewer.prototype.getState = function() {
   return this.state;
 };
 
+/**
+ * Get current progress of the GraphViewer
+ * @return {number} current progress in percentage.
+ */
 xeme.ui.GraphViewer.prototype.getProgress = function() {
   return this.step * 100 / this.opts.length;
 };
 
+/**
+ * Start the operations.
+ */
 xeme.ui.GraphViewer.prototype.play = function() {
   if (this.state == xeme.ui.GraphViewer.State.STOPPED) {
     this.state = xeme.ui.GraphViewer.State.PLAYING;
@@ -257,6 +272,9 @@ xeme.ui.GraphViewer.prototype.play = function() {
   }
 };
 
+/**
+ * Stop the operations.
+ */
 xeme.ui.GraphViewer.prototype.stop = function() {
   if (this.state == xeme.ui.GraphViewer.State.PLAYING) {
     this.state = xeme.ui.GraphViewer.State.STOPPED;
@@ -264,6 +282,9 @@ xeme.ui.GraphViewer.prototype.stop = function() {
   }
 };
 
+/**
+ * For debugging
+ */
 xeme.ui.GraphViewer.prototype.debug = function() {
   console.log(this.graph.toJSON());
 };

@@ -6,8 +6,8 @@ goog.require('goog.dom');
 goog.require('goog.events.EventType');
 goog.require('goog.fx.Dragger');
 goog.require('goog.fx.Dragger.EventType');
-goog.require('xeme.draw.Canvas');
 goog.require('goog.json');
+goog.require('xeme.draw.Canvas');
 
 
 /**
@@ -40,17 +40,22 @@ xeme.coloring.Graph.prototype.toJSON = function() {
   var e;
   var vertex;
   var edge;
-  for(var i in this.vertices) {
+  for (var i in this.vertices) {
     v = this.vertices[i];
-    vertex = {'x':v.x,'y':v.y,'name':v.name};
+    vertex = {'x': v.x, 'y': v.y, 'name': v.name};
     vertices.push(vertex);
   }
-  for(var i in this.edges) {
+  for (var i in this.edges) {
     e = this.edges[i];
-    edge = {'v1':e.v1.name,'v2':e.v2.name,'c1':e.l1.color,'c2':e.l2.color};
+    edge = {
+        'v1': e.v1.name,
+        'v2': e.v2.name,
+        'c1': e.l1.color,
+        'c2': e.l2.color
+    };
     edges.push(edge);
   }
-  return goog.json.serialize({'vertices':vertices,'edges':edges});
+  return goog.json.serialize({'vertices': vertices, 'edges': edges});
 };
 
 xeme.coloring.colors = ['red', 'green', 'blue', 'brown', 'cyan'];
@@ -122,7 +127,7 @@ xeme.coloring.Graph.prototype.render = function(width, height, container) {
     }
   }
 
-  if(!goog.dom.getElement('dummy-drag-target')) {
+  if (!goog.dom.getElement('dummy-drag-target')) {
     var t = goog.dom.createElement('div');
     goog.dom.getDocument().body.appendChild(t);
     t.id = 'dummy-drag-target';
