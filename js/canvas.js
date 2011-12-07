@@ -1,5 +1,4 @@
 goog.provide('xeme.draw.Canvas');
-
 goog.require('goog.dom');
 goog.require('goog.graphics');
 
